@@ -1,0 +1,87 @@
+{
+ "cells": [
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "KNN is a non-parametric\n",
+    "\n",
+    "KNN is also a lazy algorithm (as opposed to an eager algorithm). What this means is that it does not use the training data points to do any generalization. In other words, there is no explicit training phase. Lack of generalization means that KNN keeps all the training data. To be more exact, all (or most) the training data is needed during the testing phase.\n",
+    "\n",
+    "Predictions are made for a new instance (x) by searching through the entire training set for the K most similar instances (the neighbors) and summarizing the output variable for those K instances. \n"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "KNN for Regression\n",
+    "----------------\n",
+    "When KNN is used for regression problems the prediction is based on the mean or the median of the K-most similar instances.\n",
+    "\n",
+    "KNN for Classification\n",
+    "---------------------------\n",
+    "When KNN is used for classification, the output can be calculated as the class with the highest frequency from the K-most similar instances. Each instance in essence votes for their class and the class with the most votes is taken as the prediction.\n"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "Number \n",
+    "of Selfies       Gender      Distance(sqrt(x2-x1)^2) {x2= 155}\n",
+    "--------------------------\n",
+    "158              F\n",
+    "170              F\n",
+    "183              F\n",
+    "191              F\n",
+    "155              M\n",
+    "163              M\n",
+    "180              M\n",
+    "158              M\n",
+    "178              M      \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "Number           Number of \n",
+    "of Selfies       Friends          Gender          Distance(sqrt(x2-x1)^2 + (y2- y1)^2) {x2= 155,y2 =70}\n",
+    "-------------------------------------------------------------------------------------------------------\n",
+    "158              64                F              6.71\n",
+    "170              66                F              15.5\n",
+    "183              84                F              31.30\n",
+    "191              80                F              37.36\n",
+    "155              49                M              21.00\n",
+    "163              59                M              13.60\n",
+    "180              67                M              25.18\n",
+    "158              54                M              16.28\n",
+    "178              77                M              24.04\n",
+    "We will set k to 5 and select the three nearest training instances. Which are the 5 nearest neighbours. We see that out of the 5, 3 are classified as male. So we predict that the person is male\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
