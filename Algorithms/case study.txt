@@ -1,0 +1,39 @@
+Will this customer renew their subscription?
+Is this an image of a cat or a dog?
+Will this customer click on the top link?
+Will this tire fail in the next thousand miles?
+Does the $5 coupon or the 25% off coupon result in more return customers?
+
+Which animal is in this image?
+Which aircraft is causing this radar signature?
+What is the topic of this news article?
+What is the mood of this tweet?
+Who is the speaker in this recording?
+
+How likely is this user to click on my ad?
+What fraction of pulls on this slot machine result in payout?
+How likely is this employee to be an insider security threat?
+What fraction of today’s flights will depart on time?
+
+What will the temperature be next Tuesday?
+What will my fourth quarter sales in Portugal be?
+How many kilowatts will be demanded from my wind farm 30 minutes from now?
+How many new followers will I get next week?
+Out of a thousand units, how many of this model of bearings will survive 10,000 hours of use?
+
+Which shoppers have similar tastes in produce?
+Which viewers like the same kind of movies?
+Which printer models fail the same way?
+During which days of the week does this electrical substation have similar electrical power demands?
+What is a natural way to break these documents into five topic groups?
+
+Is this pressure reading unusual?
+Is this internet message typical?
+Is this combination of purchases very different from what this customer has made in the past?
+Are these voltages normal for this season and time of day?
+
+Where should I place this ad on the webpage so that the viewer is most likely to click it?
+Should I adjust the temperature higher, lower, or leave it where it is?
+Should I vacuum the living room again or stay plugged in to my charging station?
+How many shares of this stock should I buy right now?
+Should I continue driving at the same speed, brake, or accelerate in response to that yellow light?
