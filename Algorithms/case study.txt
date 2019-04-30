@@ -37,3 +37,15 @@ Should I adjust the temperature higher, lower, or leave it where it is?
 Should I vacuum the living room again or stay plugged in to my charging station?
 How many shares of this stock should I buy right now?
 Should I continue driving at the same speed, brake, or accelerate in response to that yellow light?
+
+
+Forecasting the corn yield in tons by state each year.
+Forecasting whether an EEG trace in seconds indicates a patient is having a seizure or not.
+Forecasting the closing price of a stock each day.
+Forecasting the birth rate at all hospitals in a city each year.
+Forecasting product sales in units sold each day for a store.
+Forecasting the number of passengers through a train station each day.
+Forecasting unemployment for a state each quarter.
+Forecasting utilization demand on a server each hour.
+Forecasting the size of the rabbit population in a state each breeding season.
+Forecasting the average price of gasoline in a city each day.
