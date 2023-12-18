@@ -8,8 +8,7 @@ EXPOSE 8080
 
 WORKDIR /app
 
-COPY ./classic_cars ./demo_app
-COPY ./.streamlit ./.streamlit
+COPY ./classic_cars ./classic_cars
 COPY ./requirements.txt ./
 RUN pip install -r requirements.txt
 
