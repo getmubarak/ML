@@ -6,7 +6,7 @@ sys.path.append(os.path.abspath('.'))
 
 import streamlit as st
 import time
-from demo_app.components.sidebar import sidebar
+from classic_cars.components.sidebar import sidebar
 from langchain.chains import ConversationChain
 from langchain.llms import OpenAI
 from sqlalchemy import create_engine, text
