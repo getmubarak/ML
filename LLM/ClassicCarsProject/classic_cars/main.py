@@ -6,17 +6,17 @@ sys.path.append(os.path.abspath('.'))
 
 import streamlit as st
 import time
+import tiktoken
+import openai
+
 from classic_cars.components.sidebar import sidebar
 from sqlalchemy import create_engine, text
-from llama_index import VectorStoreIndex, SQLDatabase
 
-from llama_index.objects import ObjectIndex
-from llama_index.objects import SQLTableNodeMapping, SQLTableSchema
-import tiktoken
+from llama_index import VectorStoreIndex, SQLDatabase
+from llama_index.objects import ObjectIndex, SQLTableNodeMapping, SQLTableSchema
 from llama_index.callbacks import CallbackManager, TokenCountingHandler
 from llama_index.indices.struct_store import SQLTableRetrieverQueryEngine
 from llama_index import ServiceContext
-import openai
 
 def load_chain():
     db_user = "root"
