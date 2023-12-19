@@ -7,8 +7,6 @@ sys.path.append(os.path.abspath('.'))
 import streamlit as st
 import time
 from classic_cars.components.sidebar import sidebar
-from langchain.chains import ConversationChain
-from langchain.llms import OpenAI
 from sqlalchemy import create_engine, text
 from llama_index import VectorStoreIndex, SQLDatabase
 
@@ -48,8 +46,6 @@ def load_chain():
         tokenizer=tiktoken.encoding_for_model("gpt-3.5-turbo").encode
     )
     callback_manager = CallbackManager([token_counter])
-    
-    llm = OpenAI(openai_api_key=st.session_state.get("OPENAI_API_KEY"), temperature=0)
     # chain = ConversationChain(llm=llm)
     openai.api_key = st.session_state.get("OPENAI_API_KEY")
     service_context = ServiceContext.from_defaults(
