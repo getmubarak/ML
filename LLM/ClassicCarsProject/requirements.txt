@@ -3,3 +3,4 @@ pymysql
 langchain 
 openai 
 streamlit
+cryptography
