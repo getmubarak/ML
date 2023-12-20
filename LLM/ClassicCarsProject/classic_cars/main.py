@@ -17,6 +17,7 @@ from llama_index.objects import ObjectIndex, SQLTableNodeMapping, SQLTableSchema
 from llama_index.callbacks import CallbackManager, TokenCountingHandler
 from llama_index.indices.struct_store import SQLTableRetrieverQueryEngine
 from llama_index import ServiceContext
+from llama_index.llms import OpenAI
 
 def load_chain():
     db_user = "root"
@@ -48,6 +49,7 @@ def load_chain():
     callback_manager = CallbackManager([token_counter])
     # chain = ConversationChain(llm=llm)
     openai.api_key = st.session_state.get("OPENAI_API_KEY")
+    llm = OpenAI(temperature=0.1, model="gpt-3.5-turbo")
     service_context = ServiceContext.from_defaults(
         llm=llm,callback_manager=callback_manager
     )
