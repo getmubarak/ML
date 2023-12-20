@@ -1,3 +1,7 @@
+### step 0 - cleanup everything
+#### docker stop $(docker ps -a -q)
+#### docker rm $(docker ps -a -q)
+#### docker network rm car-network
 
 ### step 1 - copy project
 #### copy the project to your local system
@@ -6,10 +10,10 @@
 #### docker  build . -t classic_cars:latest
 
 ### step 3 - create a network
-#### docker network create example-app
+#### docker network create car-network
 
 ### step 4 - run My SQL
-#### docker run --name mysql --privileged -e GRANT_SUDO=yes --user root --network example-app -p 3306:3306 -e MYSQL_ROOT_PASSWORD=abc --restart unless-stopped mysql
+#### docker run --name mysql --privileged -e GRANT_SUDO=yes --user root --network car-network -p 3306:3306 -e MYSQL_ROOT_PASSWORD=abc --restart unless-stopped mysql
 
 ### step 5 - copy the script to SQL container
 #### sudo docker cp /Users/mubarak/Documents/deck/ML/ml_demos/LLM/mysqlsampledatabase.sql 141b253b9656:/
@@ -27,7 +31,7 @@
 #### show databases;
 
 ### step 10 - run UI Application
-#### docker run --name classic_cars -p 8080:8080 --network example-app classic_cars:latest 
+#### docker run --name classic_cars -p 8080:8080 --network car-network classic_cars:latest 
 
 ### Step 11 - use the app
 #### open url http://localhost:8080
