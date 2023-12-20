@@ -42,3 +42,7 @@
 
 ### Step 11 - use the app
 #### open url http://localhost:8080
+
+
+#### trouble shooting
+
