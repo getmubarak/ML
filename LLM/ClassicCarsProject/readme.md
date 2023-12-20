@@ -5,6 +5,13 @@
 
 ### step 1 - copy project
 #### copy the project to your local system
++ <br/>
+ -- Dockerfile <br/>
+ -- requirements.txt <br/>
+ + classic_cars <br/>
+  -- main.py <br/>
+  + components <br/>
+   -- sidebar.py <br/>
 
 ### step 2 - build from the project directory
 #### docker  build . -t classic_cars:latest
