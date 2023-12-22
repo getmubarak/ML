@@ -4,3 +4,4 @@ langchain
 openai 
 streamlit
 cryptography
+matplotlib
