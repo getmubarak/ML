@@ -110,7 +110,9 @@ if __name__ == "__main__":
                 full_response = ""
 
                 with st.spinner('CHAT-BOT is at Work ...'):
-                    assistant_response = chain.query(user_input)
-                message_placeholder.markdown(assistant_response)
+                    assistant_response = chain.query(user_input)                    
+                    message_placeholder.markdown(assistant_response)
+                    message_placeholder2 = st.empty()
+                    message_placeholder2.markdown(assistant_response.metadata['sql_query'])
             st.session_state.messages.append({"role": "assistant", "content": assistant_response})
 
