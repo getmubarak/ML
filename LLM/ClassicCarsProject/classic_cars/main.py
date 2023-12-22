@@ -18,6 +18,10 @@ from llama_index.callbacks import CallbackManager, TokenCountingHandler
 from llama_index.indices.struct_store import SQLTableRetrieverQueryEngine
 from llama_index import ServiceContext
 from llama_index.llms import OpenAI
+import pandas as pd
+import numpy as np
+from decimal import *
+import matplotlib.pyplot as plt
 
 def load_chain():
     db_user = "root"
@@ -65,10 +69,18 @@ def load_chain():
     
     return query_engine
 
+data = None
+
 def get_text():
     input_text = st.text_input("You: ", "Hello, how are you?", key="input")
     return input_text
 
+def click_button():
+    st.write('Why hello there')
+    df = pd.DataFrame(data, columns=['column_names', 'column_values'])
+    fig, ax = plt.subplots()
+    ax.bar(column_names, column_values)
+    st.pyplot(fig)
 
 if __name__ == "__main__":
 
@@ -79,7 +91,7 @@ if __name__ == "__main__":
         initial_sidebar_state="expanded", )
     st.header("Classic Cars Interactive Dashboard")
     sidebar()
-
+    st.button('Click me', on_click=click_button)
     if not st.session_state.get("open_api_key_configured"):
         st.error("Please configure your API Keys!")
     else:
@@ -114,5 +126,16 @@ if __name__ == "__main__":
                     message_placeholder.markdown(assistant_response)
                     message_placeholder2 = st.empty()
                     message_placeholder2.markdown(assistant_response.metadata['sql_query'])
+                    message_placeholder3 = st.empty()
+                    message_placeholder3.markdown(assistant_response.metadata['result'])
+                    data = assistant_response.metadata['result']
+                    column_names, column_values = zip(*data)
+                    message_placeholder4 = st.empty()
+                    message_placeholder4.markdown(column_names)
+                    message_placeholder5 = st.empty()
+                    message_placeholder5.markdown(column_values)
+                    
+                    
             st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-
+            
+          
