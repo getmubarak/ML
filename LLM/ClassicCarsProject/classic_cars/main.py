@@ -71,17 +71,12 @@ def load_chain():
 
 data = None
 
-def get_text():
-    input_text = st.text_input("You: ", "Hello, how are you?", key="input")
-    return input_text
-
-def click_button():
-    st.write('Why hello there')
-    df = pd.DataFrame(data, columns=['column_names', 'column_values'])
+def show_graph():
+    column_names, column_values = zip(*data)
     fig, ax = plt.subplots()
     ax.bar(column_names, column_values)
-    st.pyplot(fig)
-
+    st.pyplot(fig)  
+    
 if __name__ == "__main__":
 
     st.set_page_config(
@@ -91,12 +86,12 @@ if __name__ == "__main__":
         initial_sidebar_state="expanded", )
     st.header("Classic Cars Interactive Dashboard")
     sidebar()
-    st.button('Click me', on_click=click_button)
+    
     if not st.session_state.get("open_api_key_configured"):
         st.error("Please configure your API Keys!")
     else:
         chain = load_chain()
-
+        chart_type = st.selectbox("Select a Visualization Type: ",['None', 'Bar', 'Pie'])
         if "messages" not in st.session_state:
             st.session_state["messages"] = [
                 {"role": "assistant", "content": "How can I help you?"}]
@@ -105,7 +100,8 @@ if __name__ == "__main__":
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
-
+        
+        
         if user_input := st.chat_input("What is your question?"):
             # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -115,26 +111,24 @@ if __name__ == "__main__":
 
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
-                full_response = ""
-
-            with st.chat_message("assistant"):
-                message_placeholder = st.empty()
-                full_response = ""
-
+                
                 with st.spinner('CHAT-BOT is at Work ...'):
                     assistant_response = chain.query(user_input)                    
-                    message_placeholder.markdown(assistant_response)
-                    message_placeholder2 = st.empty()
-                    message_placeholder2.markdown(assistant_response.metadata['sql_query'])
-                    message_placeholder3 = st.empty()
-                    message_placeholder3.markdown(assistant_response.metadata['result'])
+                    st.write('1. Natural Language Question send to LLM')
+                    st.write('2. LLM Generated SQL Query')
+                    st.write(assistant_response.metadata['sql_query'])
+                    st.write('3. SQL Query send to database server')
+                    st.write('4. SQL query result')
+                    st.table(assistant_response.metadata['result'])
+                    st.write('5. LLM converting SQL Query Result in to Natural Language')
+                    st.write('6. Natural Language response from LLM')
+                    st.markdown(assistant_response)
                     data = assistant_response.metadata['result']
                     column_names, column_values = zip(*data)
-                    message_placeholder4 = st.empty()
-                    message_placeholder4.markdown(column_names)
-                    message_placeholder5 = st.empty()
-                    message_placeholder5.markdown(column_values)
-                    
+                    if(chart_type == 'Bar'):
+                        fig, ax = plt.subplots()
+                        ax.bar(column_names, column_values)
+                        st.pyplot(fig)  
                     
             st.session_state.messages.append({"role": "assistant", "content": assistant_response})
             
